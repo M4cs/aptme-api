@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/max/aptme-api/.flask"
+VIRTUAL_ENV="/home/max/aptme-api/.flask"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

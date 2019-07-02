@@ -1,4 +1,4 @@
-#!/Users/max/aptme-api/.flask/bin/python
+#!/home/max/aptme-api/.flask/bin/python
 
 import sys
 import getopt

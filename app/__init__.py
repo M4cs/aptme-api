@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, send_file
+from flask import Flask, jsonify, render_template, send_file, redirect
 from flask_restful import Api
 from app.controllers.rootrender import RootRender
 
@@ -110,6 +110,10 @@ def upump():
 @app.route('/apple-touch-icon.png')
 def img():
     return send_file('templates/assets/img/apple-touch-icon.png', mimetype='image/png')
+
+@app.route('/index.html')
+def reimage():
+    return redirect('https://aptme.io/')
 
 @app.errorhandler(500)
 def fivehundo(self):

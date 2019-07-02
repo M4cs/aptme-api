@@ -1,10 +1,17 @@
 from flask import Flask, jsonify, render_template, send_file, redirect
 from flask_restful import Api
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from app.controllers.rootrender import RootRender
 
 app = Flask(__name__)
 api = Api(app)
 
+limiter = Limiter(
+    app,
+    key=get_remote_address,
+    default_limits=['100 per day', '5 per minute', '30 per hour']
+)
 @app.route('/api')
 def index():
     return jsonify({

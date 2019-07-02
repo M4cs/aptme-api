@@ -13,6 +13,9 @@ class Search(Resource):
         parser = search_parser()
         data = parser.parse_args()
         query = data['search']
+        if query == "https://repo.hackyouriphone.org":
+            print(request.remote_addr)
+            return 500
         if "hackyouriphone" in query.lower():
             return {
                 'message': 'Enough. I\'m locking you out.'

@@ -69,7 +69,8 @@
     <script src="assets/js/material-kit.js" type="text/javascript"></script>
     <script src="./upup.sw.min.js"></script>
     <script src="./upup.min.js"></script>
-    <script>if ('serviceWorker' in navigator) {
+    <script>
+    if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('/upup.sw.min.js').then(function(registration) {
           // Registration was successful

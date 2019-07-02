@@ -5,7 +5,8 @@ class RootRender:
     @staticmethod
     def generateLeaderboard():
         template = """\
-          <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link} | Viewed {vc} times</h3></a>
+          <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link}</h3>
+          <h3 class="subtitle">Views: {vc}</h3></a>
           <hr>"""
         entry = ""
         count = 1
@@ -19,6 +20,6 @@ class RootRender:
                             if "xarold" not in k:
                                 if "pulandres" not in k:
                                     if "https://cool" != k:
-                                        entry += template.format(count=count, link=k, vc=v)
+                                        entry += template.format(count=count, link=k.replace('https://', '').replace('http://', ''), vc=v)
                                         count += 1
         return entry

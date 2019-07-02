@@ -101,15 +101,11 @@ def manifest():
 
 @app.route('/upup.sw.min.js')
 def upup():
-    with open('app/templates/assets/upup.sw.min.js') as f:
-        stringit = f.read()
-    return stringit
+    return send_file('app/templates/assets/upup.sw.min.js', mimetype='text/javascript')
 
 @app.route('/upup.min.js')
 def upump():
-    with open('app/templates/assets/upup.min.js') as f:
-        stringit = f.read()
-    return stringit
+    return send_file('app/templates/assets/upup.min.js', mimetype='text/javascript')
 
 @app.route('/apple-touch-icon.png')
 def img():

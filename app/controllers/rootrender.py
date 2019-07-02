@@ -17,4 +17,5 @@ class RootRender:
             sortdict = [(k, data[k]) for k in sorted(data, key=data.get, reverse=True)]
             for k, v in sortdict:
                 entry += template.format(count=count, link=k)
+                count += 1
         return entry

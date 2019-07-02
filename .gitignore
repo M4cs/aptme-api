@@ -6,3 +6,4 @@ aptme-api.*.log
 aptme-api.ini
 ./.flask
 .vscode
+**/*.DS_Store

@@ -10,45 +10,42 @@ def search_parser():
 
 class Search(Resource):
     def get(self):
-        try:
-            parser = search_parser()
-            data = parser.parse_args()
-            query = data['search']
-            if "hackyouriphone" in query.lower():
-                return {
-                    'message': 'Enough. I\'m locking you out.'
-                }, 403
-            if "discord" in query.lower():
-                return {
-                    'message': 'Go advertise somewhere else cuckold'
-                }, 403
-            if "twitter" in query.lower():
-                return {
-                    'message': 'Nobody gives a fuck'
-                }, 403
-            if "castye" in query.lower():
-                return {
-                    'message': 'Fuck off kid'
-                }, 403
-            if "nepeta" in query:
-                return {
-                    'message': 'Nep has been blacklisted. Blame Castyte for abusing it'
-                }, 403
-            if "javascript" in query:
-                return {
-                    'message': 'No XSS'
-                }, 403
-            if "<script>" in query:
-                return {
-                    'message': 'No XSS'
-                }, 403
-            if query.endswith('/') == True:
-                query = query[:-1]
-            search.search_json(query)
-            packages = search.get_packages(query)
-            list_of = search.packages_to_json(query, packages)
-            template = search.generate_template(list_of)
-            print(request.remote_addr)
-            return make_response(render_template('package.html', template=template))
-        except:
-            return make_response(render_template('error.html'))
+        parser = search_parser()
+        data = parser.parse_args()
+        query = data['search']
+        if "hackyouriphone" in query.lower():
+            return {
+                'message': 'Enough. I\'m locking you out.'
+            }, 403
+        if "discord" in query.lower():
+            return {
+                'message': 'Go advertise somewhere else cuckold'
+            }, 403
+        if "twitter" in query.lower():
+            return {
+                'message': 'Nobody gives a fuck'
+            }, 403
+        if "castye" in query.lower():
+            return {
+                'message': 'Fuck off kid'
+            }, 403
+        if "nepeta" in query:
+            return {
+                'message': 'Nep has been blacklisted. Blame Castyte for abusing it'
+            }, 403
+        if "javascript" in query:
+            return {
+                'message': 'No XSS'
+            }, 403
+        if "<script>" in query:
+            return {
+                'message': 'No XSS'
+            }, 403
+        if query.endswith('/') == True:
+            query = query[:-1]
+        search.search_json(query)
+        packages = search.get_packages(query)
+        list_of = search.packages_to_json(query, packages)
+        template = search.generate_template(list_of)
+        print(request.remote_addr)
+        return make_response(render_template('package.html', template=template))

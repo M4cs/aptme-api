@@ -79,10 +79,6 @@ def packages_to_json(link, packages):
         depiction = depictions[i][1:]
         sileodepiction = sileodepictions[i][1:]
         depend = depends[i][1:]
-        if conflicts[i][1:] is not None:
-            conflict = conflicts[i][1:]
-        else:
-            conflict = ""
         package_json.append([{
                 'name': name,
                 'author': author,
@@ -93,7 +89,6 @@ def packages_to_json(link, packages):
                 'depiction': depiction,
                 'sileodepiction': sileodepiction,
                 'icon': icon,
-                'conflicts': conflict,
                 'depends': depend
             }])
         count += 1

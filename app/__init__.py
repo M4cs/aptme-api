@@ -24,7 +24,7 @@ def index():
 def root():
     entry = RootRender.generateLeaderboard()
     with open('app/templates/index.html', 'r') as html_file:
-        new_html = str(html_file.read())
+        new_html = str(html_file)
         new_html = new_html.format(leaderboard=entry)
         html_file.close()
     return render_template_string(new_html)

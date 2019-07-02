@@ -76,7 +76,6 @@ def packages_to_json(link, packages):
         description = descriptions[i][1:]
         maintainer = maintainers[i][1:]
         depiction = depictions[i][1:]
-        depend = depends[i][1:]
         package_json.append([{
                 'name': name,
                 'author': author,
@@ -85,7 +84,6 @@ def packages_to_json(link, packages):
                 'description': description,
                 'maintainer': maintainer,
                 'depiction': depiction,
-                'depends': depend
             }])
         count += 1
     return package_json

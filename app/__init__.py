@@ -25,7 +25,7 @@ def root():
     entry = RootRender.generateLeaderboard()
     with open('app/templates/index.html', 'r') as html_file:
         new_html = str(html_file.read()).encode('utf-8')
-        new_html = new_html.format(leaderboard=entry)
+        new_html = new_html.format(entry)
         html_file.close()
     return render_template_string(new_html)
 

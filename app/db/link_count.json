@@ -1,0 +1,10 @@
+{
+    "https://test.com": 12,
+    "https://apt.securarepo.io": 28,
+    "": 3,
+    "https://google.com": 1,
+    "https://repo.dynastic.co": 10,
+    "https://repo.dynastic.co/": 2,
+    "https://apt.securarepo.io/": 1,
+    "https://repo.packix.com": 2
+}

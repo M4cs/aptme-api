@@ -15,7 +15,7 @@ limiter = Limiter(
 
 @app.before_first_request
 def remove_cookies():
-    Response.delete_cookie()
+    return Response.delete_cookie()
 
 @app.route('/api')
 def index():

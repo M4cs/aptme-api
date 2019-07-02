@@ -10,7 +10,7 @@ api = Api(app)
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=['100 per day', '5 per minute', '30 per hour']
+    default_limits=['1000 per day', '100 per minute']
 )
 @app.route('/api')
 def index():

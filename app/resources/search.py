@@ -14,6 +14,10 @@ class Search(Resource):
             parser = search_parser()
             data = parser.parse_args()
             query = data['search']
+            if "hackyouriphone" in query:
+                return {
+                    'message': 'Enough. I\'m locking you out.'
+                }, 403
             if query.endswith('/') == True:
                 query = query[:-1]
             search.search_json(query)

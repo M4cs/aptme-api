@@ -21,8 +21,8 @@ def index():
 
 @app.route('/')
 def root():
-    entry = RootRender.generateLeaderboard()
-    return render_template('index.html', leaderboard=entry)
+    # entry = RootRender.generateLeaderboard()
+    return render_template('index.html')
 
 @app.route('/assets/css/<css>')
 def css(css):

@@ -7,7 +7,7 @@ class RootRender:
         template = """\
       <div class="card">
         <div class="card-body text-center">
-          <h4 class="subtitle">{count}. {link}</h4>
+          <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link}</h3></a>
         </div>
       </div>"""
         entry = ""

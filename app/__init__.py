@@ -105,6 +105,10 @@ def upup():
         stringit = f.read()
     return stringit
 
+@app.route('/apple-touch-icon.png')
+def img():
+    return send_file('app/templates/assets/img/apple-touch-icon.png', mimetype='image/png')
+
 @app.errorhandler(500)
 def fivehundo():
     return render_template('error.html')

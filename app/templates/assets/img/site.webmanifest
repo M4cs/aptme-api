@@ -2,7 +2,7 @@
     "name": "APTMe.io",
     "short_name": "aptme.io",
     "scope": "./",
-    "start_url": "/",
+    "start_url": "https://aptme.io",
     "icons": [
         {
             "src": "./assets/img/android-chrome-192x192.png",

@@ -13,7 +13,8 @@ class RootRender:
             data = json.load(json_file)
             sortdict = [(k, data[k]) for k in sorted(data, key=data.get, reverse=True)]
             for k, v in sortdict:
-                if len(k) >= 5:
-                    entry += template.format(count=count, link=k, vc=v)
-                    count += 1
+                if len(k) >= 12:
+                    if "hackyouriphone" not in k:
+                      entry += template.format(count=count, link=k, vc=v)
+                      count += 1
         return entry

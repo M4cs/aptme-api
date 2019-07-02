@@ -24,8 +24,8 @@ def index():
 def root():
     entry = RootRender.generateLeaderboard()
     with open('app/templates/index.html', 'r') as html_file:
-        new_html = html_file.read().decode('utf-8')
-        new_html = new_html.format(entry)
+        new_html = html_file.read()
+        new_html = str(new_html).format(entry)
         html_file.close()
     return render_template_string(new_html)
 

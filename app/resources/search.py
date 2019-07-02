@@ -32,7 +32,7 @@ class Search(Resource):
                 }, 403
             if "nepeta" in query:
                 return {
-                    'message': 'Blame Castye for abusing it'
+                    'message': 'Nep has been blacklisted. Blame Castye for abusing it'
                 }, 403
             if query.endswith('/') == True:
                 query = query[:-1]

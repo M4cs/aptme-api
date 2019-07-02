@@ -5,7 +5,7 @@ class RootRender:
     @staticmethod
     def generateLeaderboard():
         template = """\
-          <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link}</h3>
+          <a href="https://aptme.io/api/repo?search={link}"><h3 class="subtitle">{count}. {link}</h3>
           <h3 class="subtitle"><i class="fa fa-eye" style="margin-right: 1px;"></i> {vc}</h3></a>
           <hr>"""
         entry = ""

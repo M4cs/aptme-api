@@ -5,7 +5,7 @@ class RootRender:
     @staticmethod
     def generateLeaderboard():
         template = """\
-          <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link}</h3></a>
+          <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link} | Viewed {vc} times</h3></a>
           <hr>"""
         entry = ""
         count = 1
@@ -14,6 +14,6 @@ class RootRender:
             sortdict = [(k, data[k]) for k in sorted(data, key=data.get, reverse=True)]
             for k, v in sortdict:
                 if len(k) >= 5:
-                    entry += template.format(count=count, link=k)
+                    entry += template.format(count=count, link=k, vc=v)
                     count += 1
         return entry

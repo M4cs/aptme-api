@@ -1,4 +1,4 @@
-from flask_restful import reqparse, Resource
+from flask_restful import reqparse, Resource, request
 from app.controllers import search
 from flask import render_template, make_response
 import json
@@ -48,6 +48,7 @@ class Search(Resource):
             packages = search.get_packages(query)
             list_of = search.packages_to_json(query, packages)
             template = search.generate_template(list_of)
+            print(request.remote_addr)
             return make_response(render_template('package.html', template=template))
         except:
             return make_response(render_template('error.html'))

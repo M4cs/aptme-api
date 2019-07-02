@@ -1,5 +1,6 @@
 from flask_restful import reqparse, Resource
 from app.controllers import search
+from flask import render_template, make_response
 import json
 
 def search_parser():
@@ -9,14 +10,16 @@ def search_parser():
 
 class Search(Resource):
     def get(self):
-        parser = search_parser()
-        data = parser.parse_args()
-        query = data['search']
-        search.search_json(query)
-        packages = search.get_packages(query)
-        list_of = search.packages_to_json(query, packages)
-        return {
-            'message': 'komplet',
-            # 'packages': packages.decode('utf-8'),
-            'cluster_fuck': list_of
-        }
+        try:
+            parser = search_parser()
+            data = parser.parse_args()
+            query = data['search']
+            if query.endswith('/') == True:
+                query = query[:-1]
+            search.search_json(query)
+            packages = search.get_packages(query)
+            list_of = search.packages_to_json(query, packages)
+            template = search.generate_template(list_of)
+            return make_response(render_template('package.html', template=template))
+        except:
+            return make_response(render_template('error.html'))

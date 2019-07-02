@@ -24,23 +24,14 @@ def get_packages(link):
         'Accept': '*/*',
         'Keep-Alive': 'True'
     }
-    if link.endswith('/') == True:
-        ptlink = link + 'Packages'
-        bzlink = link + 'Packages.bz2'
-    else:
-        ptlink = link + '/Packages'
-        bzlink = link + '/Packages.bz2'
-    rn = time.time()
+    ptlink = link + '/Packages'
+    bzlink = link + '/Packages.bz2'
     try:
-        now = time.time()
-        print('Started to Hit Repo for .bz2 at %s' % (now - rn))
         packages = res.get(bzlink, headers=headers).content
         packages_dec = bz2.decompress(packages)
         return packages_dec
     except:
         try:
-            now = time.time()
-            print('Started to Hit Repo for plaintext at %s' % (now - rn))
             packages = res.get(ptlink, headers=headers).content
             return packages
         except:
@@ -73,14 +64,48 @@ def packages_to_json(link, packages):
         elif key[0] == 'Author':
             authors.append(key[1])
     package_json = []
+    count = 0
     for i in range(len(package_ids)):
-        package_json.append({
-            package_ids[i]: {
-                'name': names[i],
-                'author': authors[i],
-                'download_link': link + filenames[i],
-                'version': versions[i],
-                'description': descriptions[i]
-            }
-        })
+        filename = filenames[i][1:]
+        name = names[i][1:]
+        author = authors[i][1:]
+        version = versions[i][1:]
+        description = descriptions[i][1:]
+        package_json.append([{
+                'name': name,
+                'author': author,
+                'download_link': link + '/' + filename,
+                'version': version,
+                'description': description
+            }])
+        count += 1
     return package_json
+
+def generate_template(list_of):
+    template = """\
+      <div class="card" style="margin: 5px;">
+        <div class="card-body">
+            <span style="float:right">
+              <a class="btn btn-primary btn-round" alt="Download" title="Download" href="{download_link}"><i class="fa fa-download" style="color:white;"></i></a>
+              <a class="btn btn-primary btn-round" title="Share" disabled><i class="fa fa-share-alt" style="color:white;"></i></a>
+            </span>
+            <h4 class="card-title">{package_title}</h4>
+            <h6 class="card-subtitle mb-2">{package_author}</h6>
+            <h6 class="card-subtitle mb-3 text-muted">{package_version}</h6>
+            <hr>
+            <p class="card-text">{package_description}</p>
+        </div>
+      </div>"""
+    entry = ""
+    for i in range(len(list_of)):
+        print(list_of[0])
+        package_title = list_of[i][0]['name']
+        package_author = list_of[i][0]['author']
+        package_version = list_of[i][0]['version']
+        package_description = list_of[i][0]['description']
+        download_link = list_of[i][0]['download_link']
+        entry += template.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
+    return entry
+        
+        
+        

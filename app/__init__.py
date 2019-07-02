@@ -110,7 +110,7 @@ def img():
     return send_file('app/templates/assets/img/apple-touch-icon.png', mimetype='image/png')
 
 @app.errorhandler(500)
-def fivehundo():
+def fivehundo(self):
     return render_template('error.html')
 
 from app.resources.search import Search

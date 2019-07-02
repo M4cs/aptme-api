@@ -65,6 +65,40 @@ def jsplugcapiore(js):
 def imageapi(image):
     return send_file('templates/assets/img/{}'.format(image))
 
+@app.route('/manifest.json')
+def manifest():
+    return jsonify({
+    "name": "APTMe.io",
+    "short_name": "aptme.io",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "./android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./apple-touch-icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/img/favicon.ico",
+            "sizes": "512x512",
+            "type": "image/icon"
+        }
+    ],
+    "theme_color": "#ffee00",
+    "background_color": "#0a0a0a",
+    "display": "standalone"
+})
+
 @app.errorhandler(500)
 def fivehundo():
     return render_template('error.html')

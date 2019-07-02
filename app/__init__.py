@@ -25,6 +25,10 @@ def css(css):
 def jscore(js):
     return send_file('templates/assets/js/core/{}'.format(js))
 
+@app.route('/assets/js/plugins/<js>')
+def jsplugcore(js):
+    return send_file('templates/assets/js/plugins/{}'.format(js))
+
 @app.route('/assets/sass/<path>')
 def sass(path):
     return send_file('templates/assets/sass/{}'.format(path))
@@ -52,6 +56,10 @@ def jsapi(js):
 @app.route('/api/assets/js/core/<js>')
 def jsapicore(js):
     return send_file('templates/assets/js/core/{}'.format(js))
+
+@app.route('/assets/js/plugins/<js>')
+def jsplugcapiore(js):
+    return send_file('templates/assets/js/plugins/{}'.format(js))
 
 @app.route('/api/assets/img/<image>')
 def imageapi(image):

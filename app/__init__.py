@@ -70,7 +70,7 @@ def manifest():
     return jsonify({
     "name": "APTMe.io",
     "short_name": "aptme.io",
-    "scope": ".ca/",
+    "scope": "./",
     "start_url": "/",
     "icons": [
         {

@@ -14,25 +14,25 @@ class Search(Resource):
             parser = search_parser()
             data = parser.parse_args()
             query = data['search']
-            if "hackyouriphone" in query:
+            if "hackyouriphone" in query.lower():
                 return {
                     'message': 'Enough. I\'m locking you out.'
                 }, 403
-            if "discord" in query:
+            if "discord" in query.lower():
                 return {
                     'message': 'Go advertise somewhere else cuckold'
                 }, 403
-            if "twitter" in query:
+            if "twitter" in query.lower():
                 return {
                     'message': 'Nobody gives a fuck'
                 }, 403
-            if "castye" in query:
+            if "castye" in query.lower():
                 return {
                     'message': 'Fuck off kid'
                 }, 403
             if "nepeta" in query:
                 return {
-                    'message': 'Nep has been blacklisted. Blame Castye for abusing it'
+                    'message': 'Nep has been blacklisted. Blame Castyte for abusing it'
                 }, 403
             if query.endswith('/') == True:
                 query = query[:-1]

@@ -6,7 +6,7 @@ class RootRender:
     def generateLeaderboard():
         template = """\
           <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link}</h3>
-          <h3 class="subtitle">Views: {vc}</h3></a>
+          <h3 class="subtitle"><i class="fas fa-eye"></i> {vc}</h3></a>
           <hr>"""
         entry = ""
         count = 1

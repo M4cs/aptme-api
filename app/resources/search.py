@@ -18,6 +18,14 @@ class Search(Resource):
                 return {
                     'message': 'Enough. I\'m locking you out.'
                 }, 403
+            if "discord" in query:
+                return {
+                    'message': 'Go advertise somewhere else cuckold'
+                }, 403
+            if "twitter" in query:
+                return {
+                    'message': 'Nobody gives a fuck'
+                }, 403
             if query.endswith('/') == True:
                 query = query[:-1]
             search.search_json(query)

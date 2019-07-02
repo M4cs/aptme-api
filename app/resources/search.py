@@ -34,6 +34,14 @@ class Search(Resource):
                 return {
                     'message': 'Nep has been blacklisted. Blame Castyte for abusing it'
                 }, 403
+            if "javascript" in query:
+                return {
+                    'message': 'No XSS'
+                }, 403
+            if "<script>" in query:
+                return {
+                    'message': 'No XSS'
+                }, 403
             if query.endswith('/') == True:
                 query = query[:-1]
             search.search_json(query)

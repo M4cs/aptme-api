@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, send_file, redirect, Response, render_template_string
+from flask import Flask, jsonify, render_template, send_file, redirect, Response
 from flask_restful import Api
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -23,11 +23,7 @@ def index():
 @app.route('/')
 def root():
     entry = RootRender.generateLeaderboard()
-    with open('app/templates/index.html', 'r') as html_file:
-        new_html = html_file.read()
-        new_html = str(new_html).replace('{leaderboard}', entry)
-        html_file.close()
-    return render_template_string(new_html)
+    return render_template('index.html', leaderboard=entry)
 
 @app.route('/assets/css/<css>')
 def css(css):

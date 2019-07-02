@@ -26,6 +26,10 @@ class Search(Resource):
                 return {
                     'message': 'Nobody gives a fuck'
                 }, 403
+            if "castye" in query:
+                return {
+                    'message': 'Fuck off kid'
+                }, 403
             if query.endswith('/') == True:
                 query = query[:-1]
             search.search_json(query)

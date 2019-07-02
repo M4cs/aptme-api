@@ -13,10 +13,6 @@ limiter = Limiter(
     default_limits=['5000 per minute']
 )
 
-@app.before_first_request
-def ip():
-    print(request.environ['REMOTE_ADDR'])
-
 @app.route('/api')
 def index():
     return jsonify({

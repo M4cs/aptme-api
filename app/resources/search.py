@@ -11,6 +11,7 @@ def search_parser():
 class Search(Resource):
     def get(self):
         try:
+            print(request.environ.get('HTTP_X_REAL_IP', request.remote_addr))
             parser = search_parser()
             data = parser.parse_args()
             query = data['search']

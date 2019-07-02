@@ -1,8 +1,8 @@
 {
     "name": "APTMe.io",
     "short_name": "aptme.io",
-    "scope": "./",
-    "start_url": "https://aptme.io",
+    "scope": "/",
+    "start_url": "/",
     "icons": [
         {
             "src": "./assets/img/android-chrome-192x192.png",
@@ -13,9 +13,19 @@
             "src": "./assets/img/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "./assets/img/apple-touch-icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./assets/img/favicon.ico",
+            "sizes": "512x512",
+            "type": "image/icon"
         }
     ],
     "theme_color": "#ffee00",
-    "background_color": "#ffee00",
+    "background_color": "#0a0a0a",
     "display": "standalone"
 }

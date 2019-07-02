@@ -75,9 +75,7 @@ def packages_to_json(link, packages):
         version = versions[i][1:]
         description = descriptions[i][1:]
         maintainer = maintainers[i][1:]
-        icon = icons.get([i][1:])
         depiction = depictions[i][1:]
-        sileodepiction = sileodepictions.get([i][1:])
         depend = depends[i][1:]
         package_json.append([{
                 'name': name,
@@ -87,8 +85,6 @@ def packages_to_json(link, packages):
                 'description': description,
                 'maintainer': maintainer,
                 'depiction': depiction,
-                'sileodepiction': sileodepiction,
-                'icon': icon,
                 'depends': depend
             }])
         count += 1

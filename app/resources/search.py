@@ -46,6 +46,7 @@ class Search(Resource):
             }, 403
         if query.endswith('/') == True:
             query = query[:-1]
+        print(query)
         search.search_json(query)
         packages = search.get_packages(query)
         list_of = search.packages_to_json(query, packages)

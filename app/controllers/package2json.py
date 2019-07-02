@@ -1,6 +1,6 @@
 import json, requests, lzma, gzip, bz2
 import time
-from flask import make_request, render_template
+from flask import make_response, render_template
 
 def get_packages(link):
     res = requests.session()
@@ -90,4 +90,4 @@ def packages_to_json(link, packages):
             count += 1
         return package_json
     except:
-        return make_request(render_template('error.html'))
+        return make_response(render_template('error.html'))

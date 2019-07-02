@@ -1,5 +1,6 @@
 import json, requests, lzma, gzip, bz2
 import time
+from flask import make_request, render_template
 
 def get_packages(link):
     res = requests.session()
@@ -26,64 +27,67 @@ def get_packages(link):
             return None
 
 def packages_to_json(link, packages):
-    list_of_entries = packages.decode('utf-8').splitlines()
-    package_json = {}
-    package_ids = []
-    filenames = []
-    names = []
-    authors = []
-    versions = []
-    descriptions = []
-    icons = []
-    depictions = []
-    sileodepictions = []
-    maintainers = []
-    depends = []
-    conflicts = []
-    for entry in list_of_entries:
-        key = entry.split(":", 1)
-        if key[0] == 'Filename':
-            filenames.append(key[1])
-        elif key[0] == 'Depiction':
-            depictions.append(key[1])
-        elif key[0].lower() == 'sileodepiction':
-            sileodepictions.append(key[1])
-        elif key[0] == 'Maintainer':
-            maintainers.append(key[1])
-        elif key[0] == 'Name':
-            names.append(key[1])
-        elif key[0] == 'Package':
-            package_ids.append(key[1])
-        elif key[0] == 'Icon':
-            icons.append(key[1])
-        elif key[0] == 'Version':
-            versions.append(key[1])
-        elif key[0] == 'Description':
-            descriptions.append(key[1])
-        elif key[0] == 'Author':
-            authors.append(key[1])
-        elif key[0] == 'Depends':
-            depends.append(key[1])
-        elif key[0] == 'Conflicts':
-            conflicts.append(key[1])
-    package_json = []
-    count = 0
-    for i in range(len(package_ids)):
-        filename = filenames[i][1:]
-        name = names[i][1:]
-        author = authors[i][1:]
-        version = versions[i][1:]
-        description = descriptions[i][1:]
-        maintainer = maintainers[i][1:]
-        depiction = depictions[i][1:]
-        package_json.append([{
-                'name': name,
-                'author': author,
-                'download_link': link + '/' + filename,
-                'version': version,
-                'description': description,
-                'maintainer': maintainer,
-                'depiction': depiction,
-            }])
-        count += 1
-    return package_json
+    try:
+        list_of_entries = packages.decode('utf-8').splitlines()
+        package_json = {}
+        package_ids = []
+        filenames = []
+        names = []
+        authors = []
+        versions = []
+        descriptions = []
+        icons = []
+        depictions = []
+        sileodepictions = []
+        maintainers = []
+        depends = []
+        conflicts = []
+        for entry in list_of_entries:
+            key = entry.split(":", 1)
+            if key[0] == 'Filename':
+                filenames.append(key[1])
+            elif key[0] == 'Depiction':
+                depictions.append(key[1])
+            elif key[0].lower() == 'sileodepiction':
+                sileodepictions.append(key[1])
+            elif key[0] == 'Maintainer':
+                maintainers.append(key[1])
+            elif key[0] == 'Name':
+                names.append(key[1])
+            elif key[0] == 'Package':
+                package_ids.append(key[1])
+            elif key[0] == 'Icon':
+                icons.append(key[1])
+            elif key[0] == 'Version':
+                versions.append(key[1])
+            elif key[0] == 'Description':
+                descriptions.append(key[1])
+            elif key[0] == 'Author':
+                authors.append(key[1])
+            elif key[0] == 'Depends':
+                depends.append(key[1])
+            elif key[0] == 'Conflicts':
+                conflicts.append(key[1])
+        package_json = []
+        count = 0
+        for i in range(len(package_ids)):
+            filename = filenames[i][1:]
+            name = names[i][1:]
+            author = authors[i][1:]
+            version = versions[i][1:]
+            description = descriptions[i][1:]
+            maintainer = maintainers[i][1:]
+            depiction = depictions[i][1:]
+            package_json.append([{
+                    'name': name,
+                    'author': author,
+                    'download_link': link + '/' + filename,
+                    'version': version,
+                    'description': description,
+                    'maintainer': maintainer,
+                    'depiction': depiction,
+                }])
+            count += 1
+        return package_json
+    except:
+        return make_request(render_template('error.html'))

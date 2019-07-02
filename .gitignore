@@ -1,3 +1,6 @@
 .flaskapp/
 **/*.pyc
 .flask/
+aptme-api.*.log
+./wsgi.py
+aptme-api.ini

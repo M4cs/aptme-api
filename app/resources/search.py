@@ -10,6 +10,7 @@ def search_parser():
 
 class Search(Resource):
     def get(self):
+        print('REMOTE ADDR', request.remote_addr)
         parser = search_parser()
         data = parser.parse_args()
         query = data['search']
@@ -46,10 +47,8 @@ class Search(Resource):
             }, 403
         if query.endswith('/') == True:
             query = query[:-1]
-        print(query)
         search.search_json(query)
         packages = search.get_packages(query)
         list_of = search.packages_to_json(query, packages)
         template = search.generate_template(list_of)
-        print(request.remote_addr)
         return make_response(render_template('package.html', template=template))

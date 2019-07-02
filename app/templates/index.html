@@ -68,7 +68,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="assets/js/material-kit.js" type="text/javascript"></script>
     <script>
-// This is the "Offline page" service worker
+// This is the service worker with the Cache-first network
 
 // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
@@ -79,7 +79,7 @@ if ("serviceWorker" in navigator) {
   } else {
     // Register the service worker
     navigator.serviceWorker
-      .register("/pwabuilder-sw.js", {
+      .register("pwabuilder-sw.js", {
         scope: "./"
       })
       .then(function (reg) {

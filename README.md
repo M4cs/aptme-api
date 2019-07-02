@@ -7,3 +7,5 @@ This service allows you to view and download debian packages from certain repost
 This runs on flask with uwsgi and uses a JSON db for the search count. 
 
 Please make PRs and don't rehost this service somewhere else using this code. This code should be used for learning purposes only.
+
+This source code is under copyright to myself so you are not allowed to redistribute or host on your own. If you are caught I will not hesitate to strike a DCMA on your website.

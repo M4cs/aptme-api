@@ -101,11 +101,11 @@ def manifest():
 
 @app.route('/upup.sw.min.js')
 def upup():
-    return send_file('app/templates/assets/upup.sw.min.js', mimetype='text/javascript', as_attachment=True, attachment_filename='upup.sw.min.js')
+    return send_file('app/templates/assets/upup.sw.min.js', as_attachment=True, attachment_filename='upup.sw.min.js')
 
 @app.route('/upup.min.js')
 def upump():
-    return send_file('app/templates/assets/upup.min.js', mimetype='text/javascript', as_attachment=True, attachment_filename='upup.min.js')
+    return send_file('app/templates/assets/upup.min.js', as_attachment=True, attachment_filename='upup.min.js')
 
 @app.route('/apple-touch-icon.png')
 def img():

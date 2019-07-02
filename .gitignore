@@ -1,2 +1,2 @@
 .flaskapp/
-**/*__pycache__/
+**/*.pyc

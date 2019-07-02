@@ -29,9 +29,9 @@ def sass(path):
 def js(js):
     return send_file('templates/assets/js/{}'.format(js))
 
-@app.route('/assets/images/<image>')
+@app.route('/assets/img/<image>')
 def image(image):
-    return send_file('templates/assets/images/{}'.format(image))
+    return send_file('templates/assets/img/{}'.format(image))
 
 @app.route('/api/assets/css/<css>')
 def cssapi(css):

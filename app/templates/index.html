@@ -68,26 +68,5 @@
     <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="assets/js/material-kit.js" type="text/javascript"></script>
-    <script>
-// This is the service worker with the Cache-first network
-
-// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
-
-// Check compatibility for the browser we're running this in
-if ("serviceWorker" in navigator) {
-  if (navigator.serviceWorker.controller) {
-    console.log("[PWA Builder] active service worker found, no need to register");
-  } else {
-    // Register the service worker
-    navigator.serviceWorker
-      .register("pwabuilder-sw.js", {
-        scope: "./"
-      })
-      .then(function (reg) {
-        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-      });
-  }
-}
-  </script>
   </body>
 </html>

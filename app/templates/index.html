@@ -70,19 +70,6 @@
     <script src="./upup.sw.min.js"></script>
     <script src="./upup.min.js"></script>
     <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/upup.sw.min.js').then(function(registration) {
-          // Registration was successful
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function(err) {
-          // registration failed :(
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
-    </script>
-    <script>
       UpUp.start({
         'content': '<nav class="navbar sticky-top bg-dark navbar-expand-lg" style="border-radius: 0%;"><div class="container"><a class="navbar-brand" href="/">APT Me</a><span class="navbar-text">Created by Max Bridgland</span></div></nav>'
       });

@@ -75,9 +75,9 @@ def packages_to_json(link, packages):
         version = versions[i][1:]
         description = descriptions[i][1:]
         maintainer = maintainers[i][1:]
-        icon = icons[i][1:]
+        icon = icons.get([i][1:])
         depiction = depictions[i][1:]
-        sileodepiction = sileodepictions[i][1:]
+        sileodepiction = sileodepictions.get([i][1:])
         depend = depends[i][1:]
         package_json.append([{
                 'name': name,

@@ -15,7 +15,7 @@ class RootRender:
             for k, v in sortdict:
                 if len(k) >= 12:
                     if "hackyouriphone" not in k:
-                        if "kiimo" not in k:
+                        if "kiiimo" not in k:
                             if "xarold" not in k:
                                 if "pulandres" not in k:
                                     if "https://cool" != k:

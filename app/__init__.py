@@ -105,6 +105,12 @@ def upup():
         stringit = f.read()
     return stringit
 
+@app.route('/upup.min.js')
+def upump():
+    with open('app/templates/assets/upup.min.js') as f:
+        stringit = f.read()
+    return stringit
+
 @app.route('/apple-touch-icon.png')
 def img():
     return send_file('app/templates/assets/img/apple-touch-icon.png', mimetype='image/png')

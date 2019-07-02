@@ -45,9 +45,9 @@ def sassapi(path):
 def jsapi(js):
     return send_file('templates/assets/js/{}'.format(js))
 
-@app.route('/api/assets/images/<image>')
+@app.route('/api/assets/img/<image>')
 def imageapi(image):
-    return send_file('templates/assets/images/{}'.format(image))
+    return send_file('templates/assets/img/{}'.format(image))
 
 @app.errorhandler(500)
 def fivehundo():

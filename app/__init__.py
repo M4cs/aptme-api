@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, send_file, redirect
+from flask import Flask, jsonify, render_template, send_file, redirect, Response
 from flask_restful import Api
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -12,6 +12,11 @@ limiter = Limiter(
     key_func=get_remote_address,
     default_limits=['100 per minute']
 )
+
+@app.before_first_request
+def remove_cookies():
+    Response.delete_cookie()
+
 @app.route('/api')
 def index():
     return jsonify({

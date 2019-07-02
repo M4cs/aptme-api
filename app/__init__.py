@@ -23,7 +23,7 @@ def index():
 @app.route('/')
 def root():
     entry = RootRender.generateLeaderboard()
-    with open('templates/index.html', 'r') as html_file:
+    with open('app/templates/index.html', 'r') as html_file:
         new_html = str(html_file.read())
         new_html = new_html.format(leaderboard=entry)
         html_file.close()

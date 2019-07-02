@@ -70,7 +70,7 @@ def manifest():
     return jsonify({
     "name": "APTMe.io",
     "short_name": "aptme.io",
-    "scope": "/",
+    "scope": "./",
     "start_url": "/",
     "icons": [
         {
@@ -103,9 +103,9 @@ def manifest():
 def upup():
     return send_file('app/templates/assets/upup.sw.min.js')
 
-@app.route('/upup.min.js')
+@app.route('/pwabuilder-sw.js')
 def upump():
-    return send_file('app/templates/assets/upup.min.js')
+    return send_file('app/templates/assets/pwabuilder-sw.js')
 
 @app.route('/apple-touch-icon.png')
 def img():

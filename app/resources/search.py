@@ -14,7 +14,9 @@ class Search(Resource):
         query = data['search']
         search.search_json(query)
         packages = search.get_packages(query)
+        list_of = search.packages_to_json(query, packages)
         return {
             'message': 'komplet',
-            'packages': packages.decode('utf-8')
+            # 'packages': packages.decode('utf-8'),
+            'cluster_fuck': list_of
         }

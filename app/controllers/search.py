@@ -45,4 +45,42 @@ def get_packages(link):
             return packages
         except:
             return None
-        
+
+def packages_to_json(link, packages):
+    list_of_entries = packages.decode('utf-8').splitlines()
+    package_json = {}
+    package_ids = []
+    filenames = []
+    names = []
+    authors = []
+    versions = []
+    descriptions = []
+    icons = []
+    for entry in list_of_entries:
+        key = entry.split(":", 1)
+        if key[0] == 'Filename':
+            filenames.append(key[1])
+        elif key[0] == 'Name':
+            names.append(key[1])
+        elif key[0] == 'Package':
+            package_ids.append(key[1])
+        elif key[0] == 'Icon':
+            icons.append(key[1])
+        elif key[0] == 'Version':
+            versions.append(key[1])
+        elif key[0] == 'Description':
+            descriptions.append(key[1])
+        elif key[0] == 'Author':
+            authors.append(key[1])
+    package_json = []
+    for i in range(len(package_ids)):
+        package_json.append({
+            package_ids[i]: {
+                'name': names[i],
+                'author': authors[i],
+                'download_link': link + filenames[i],
+                'version': versions[i],
+                'description': descriptions[i]
+            }
+        })
+    return package_json

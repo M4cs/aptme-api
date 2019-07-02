@@ -1,4 +1,4 @@
-#!/home/max/aptme-api/.flask/bin/python3
+#!/Users/max/aptme-api/.flask/bin/python3.7
 # -*- coding: utf-8 -*-
 import re
 import sys

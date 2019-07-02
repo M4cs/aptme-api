@@ -16,6 +16,9 @@ def _deactivate(args):
     if "VIRTUAL_ENV" in ${...}:
         del $VIRTUAL_ENV
 
+    if "VIRTUAL_ENV_PROMPT" in ${...}:
+        del $VIRTUAL_ENV_PROMPT
+
     if "nondestructive" not in args:
         # Self destruct!
         del aliases["deactivate"]
@@ -25,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/max/aptme-api/.flask"
+$VIRTUAL_ENV = r"/Users/max/aptme-api/.flask"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
@@ -35,5 +38,9 @@ if ${...}.get("PYTHONHOME", ""):
     # unset PYTHONHOME if set
     $_OLD_VIRTUAL_PYTHONHOME = $PYTHONHOME
     del $PYTHONHOME
+
+$VIRTUAL_ENV_PROMPT = ""
+if not $VIRTUAL_ENV_PROMPT:
+    del $VIRTUAL_ENV_PROMPT
 
 aliases["pydoc"] = ["python", "-m", "pydoc"]

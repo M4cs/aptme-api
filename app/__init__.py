@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template, send_file
 from flask_restful import Api
+from app.controllers.rootrender import RootRender
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,7 +14,8 @@ def index():
 
 @app.route('/')
 def root():
-    return render_template('index.html')
+    entry = RootRender.generateLeaderboard()
+    return render_template('index.html', leaderboard=entry)
 
 @app.route('/assets/css/<css>')
 def css(css):

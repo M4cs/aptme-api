@@ -4,3 +4,5 @@
 aptme-api.*.log
 ./wsgi.py
 aptme-api.ini
+./.flask
+.vscode

@@ -105,7 +105,7 @@ def upup():
 
 @app.route('/pwabuilder-sw.js')
 def upump():
-    return send_file('templates/assets/pwabuilder-sw.js')
+    return send_file('templates/assets/pwabuilder-sw.js', mimetype='application/javascript')
 
 @app.route('/apple-touch-icon.png')
 def img():

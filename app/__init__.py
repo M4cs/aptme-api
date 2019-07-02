@@ -131,6 +131,6 @@ def fivehundo(self):
 from app.resources.search import Search
 from app.resources.download import Download
 from app.resources.package2json import OpenPackage
-api.add_resource(Search, '/api/repos')
+api.add_resource(Search, '/api/repo')
 api.add_resource(Download, '/api/dl')
 api.add_resource(OpenPackage, '/api/package2json')

@@ -99,6 +99,12 @@ def manifest():
     "display": "standalone"
 })
 
+@app.route('/upup.sw.min.js')
+def upup():
+    with open('app/templates/assets/upup.sw.min.js') as f:
+        stringit = f.read()
+    return stringit
+
 @app.errorhandler(500)
 def fivehundo():
     return render_template('error.html')

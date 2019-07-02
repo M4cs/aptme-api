@@ -65,6 +65,7 @@ def jsplugcapiore(js):
 def imageapi(image):
     return send_file('templates/assets/img/{}'.format(image))
 
+@app.route('/assets/img/site.webmanifest')
 @app.route('/manifest.json')
 def manifest():
     return jsonify({

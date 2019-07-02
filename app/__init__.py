@@ -13,10 +13,6 @@ limiter = Limiter(
     default_limits=['100 per minute']
 )
 
-@app.before_first_request
-def remove_cookies():
-    return Response.delete_cookie()
-
 @app.route('/api')
 def index():
     return jsonify({

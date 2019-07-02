@@ -98,7 +98,6 @@ def generate_template(list_of):
       </div>"""
     entry = ""
     for i in range(len(list_of)):
-        print(list_of[0])
         package_title = list_of[i][0]['name']
         package_author = list_of[i][0]['author']
         package_version = list_of[i][0]['version']

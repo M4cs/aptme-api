@@ -14,7 +14,10 @@ class RootRender:
             sortdict = [(k, data[k]) for k in sorted(data, key=data.get, reverse=True)]
             for k, v in sortdict:
                 if len(k) >= 12:
-                    if "hackyouriphone" not in k or "kiimo" not in k or "xarold" not in k or "pulandres" not in k:
-                      entry += template.format(count=count, link=k, vc=v)
-                      count += 1
+                    if "hackyouriphone" not in k:
+                        if "kiimo" not in k:
+                            if "xarold" not in k:
+                                if "pulandres" not in k:
+                                    entry += template.format(count=count, link=k, vc=v)
+                                    count += 1
         return entry

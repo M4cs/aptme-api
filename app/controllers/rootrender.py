@@ -15,8 +15,8 @@ class RootRender:
         with open('app/db/link_count.json', 'r+') as json_file:
             data = json.load(json_file)
             sortdict = [(k, data[k]) for k in sorted(data, key=data.get, reverse=True)]
-            while count <= 10:
-                for k, v in sortdict:
+            for k, v in sortdict:
+                while count <= 10:
                     if len(k) >= 5:   
                         entry += template.format(count=count, link=k)
                         count += 1

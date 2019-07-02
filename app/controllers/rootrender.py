@@ -18,7 +18,7 @@ class RootRender:
                         if "kiimo" not in k:
                             if "xarold" not in k:
                                 if "pulandres" not in k:
-                                    if "http://cool" != k:
+                                    if "https://cool" != k:
                                         entry += template.format(count=count, link=k, vc=v)
                                         count += 1
         return entry

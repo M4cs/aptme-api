@@ -1,3 +1,6 @@
+import json, requests, lzma, gzip, bz2
+import time
+
 def get_packages(link):
     res = requests.session()
     headers = {

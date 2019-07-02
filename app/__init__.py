@@ -57,7 +57,7 @@ def jsapi(js):
 def jsapicore(js):
     return send_file('templates/assets/js/core/{}'.format(js))
 
-@app.route('/assets/js/plugins/<js>')
+@app.route('/api/assets/js/plugins/<js>')
 def jsplugcapiore(js):
     return send_file('templates/assets/js/plugins/{}'.format(js))
 

@@ -70,7 +70,7 @@ def manifest():
     return jsonify({
     "name": "APTMe.io",
     "short_name": "aptme.io",
-    "scope": "./",
+    "scope": ".ca/",
     "start_url": "/",
     "icons": [
         {
@@ -101,15 +101,15 @@ def manifest():
 
 @app.route('/upup.sw.min.js')
 def upup():
-    return send_file('app/templates/assets/upup.sw.min.js')
+    return send_file('templates/assets/upup.sw.min.js')
 
 @app.route('/pwabuilder-sw.js')
 def upump():
-    return send_file('app/templates/assets/pwabuilder-sw.js')
+    return send_file('templates/assets/pwabuilder-sw.js')
 
 @app.route('/apple-touch-icon.png')
 def img():
-    return send_file('app/templates/assets/img/apple-touch-icon.png', mimetype='image/png')
+    return send_file('templates/assets/img/apple-touch-icon.png', mimetype='image/png')
 
 @app.errorhandler(500)
 def fivehundo(self):

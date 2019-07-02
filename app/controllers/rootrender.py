@@ -6,7 +6,7 @@ class RootRender:
     def generateLeaderboard():
         template = """\
       <div class="card">
-        <div class="card-body text-center">
+        <div class="card-body text-center" style="margin: 1px;">
           <a href="https://aptme.io/api/repos?search={link}"><h3 class="subtitle">{count}. {link}</h3></a>
         </div>
       </div>"""

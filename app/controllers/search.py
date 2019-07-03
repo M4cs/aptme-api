@@ -42,21 +42,15 @@ def get_packages(link):
     try:
         packages = res.get(bzlink, headers=headers).content
         packages_dec = bz2.decompress(packages)
-        res.close()
         return packages_dec
     except:
         try:
             packages = res.get(ptlink, headers=headers).content
-            res.close()
             return packages
         except:
-            res.close()
             return None
 
 def packages_to_json(link, packages):
-    if packages == None:
-        return None
-    print(packages)
     list_of_entries = packages.decode('utf-8').splitlines()
     package_json = {}
     package_ids = []
@@ -148,7 +142,6 @@ def generate_template(list_of):
         package_description = list_of[i][0]['description']
         download_link = list_of[i][0]['download_link']
         paid = list_of[i][0]['paid']
-        print(list_of)
         if paid == True:
             entry += template_paid.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
         else:

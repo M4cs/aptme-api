@@ -42,12 +42,15 @@ def get_packages(link):
     try:
         packages = res.get(bzlink, headers=headers).content
         packages_dec = bz2.decompress(packages)
+        res.close()
         return packages_dec
     except:
         try:
             packages = res.get(ptlink, headers=headers).content
+            res.close()
             return packages
         except:
+            res.close()
             return None
 
 def packages_to_json(link, packages):

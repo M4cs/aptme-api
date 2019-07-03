@@ -1,5 +1,6 @@
 from flask_restful import reqparse, Resource, request
 from app.controllers import search
+from app import app
 from flask import render_template, make_response
 import json
 
@@ -7,7 +8,7 @@ import json
 def search_parser():
     parser = reqparse.RequestParser()
     parser.add_argument('search', type=str, required=True)
-    parser.add_argument('force_cache', type=bool)
+    parser.add_argument('force_cache', type=str)
     return parser
 
 
@@ -21,13 +22,15 @@ class Search(Resource):
             return make_response(render_template('error.html'))
         if search.check_cache(link) == True:
             if data['force_cache'] != 'on':
-                print('Serving Cached!')
+                if app.testing == True:
+                    print('Serving Cached Package Index for URL:', link)
                 template = search.grab_cache(link)
                 return make_response(render_template('package.html', template=template))
             else:
+                if app.testing == True:
+                    print('Serving Un-Cached Package Index for URL:', link)
                 pass
         if query == "https://repo.hackyouriphone.org":
-            print(request.remote_addr)
             return 500
         if "hackyouriphone" in query.lower():
             return {

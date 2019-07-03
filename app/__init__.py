@@ -7,7 +7,6 @@ from app.controllers.rootrender import RootRender
 app = Flask(__name__)
 api = Api(app)
 
-app.jinja_env.cache = {}
 
 limiter = Limiter(
     app,

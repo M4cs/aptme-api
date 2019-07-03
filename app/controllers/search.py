@@ -1,5 +1,5 @@
 import json, requests, lzma, gzip, bz2
-import time
+import time, os
 def search_json(link):
     with open('app/db/link_count.json', 'r+') as json_file:
         data = json.load(json_file)
@@ -12,6 +12,26 @@ def search_json(link):
         json_file.truncate()
         json.dump(data, json_file, indent=4)
         json_file.close()
+        
+def cache_packages(link, packages_json):
+    with open('app/db/{}.json'.format(link), 'r+') as json_file:
+        data = {}
+        data[link] = packages_json
+        json_file.seek(0)
+        json_file.truncate()
+        json.dump(data, json_file, indent=4)
+        json_file.close()
+    return True
+
+def check_cache(link):
+    return os.path.exists('app/db/{}.json'.format(link))
+
+def grab_cache(link):
+    with open('app/db/{}.json'.format(link), 'r+') as json_file:
+        data = json.load(json_file)
+        package_json = data[link]
+        json_file.close()
+    return package_json
 
 def get_packages(link):
     res = requests.session()

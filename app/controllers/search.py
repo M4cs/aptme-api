@@ -65,6 +65,7 @@ def packages_to_json(link, packages):
     versions = []
     descriptions = []
     icons = []
+    paid = []
     for entry in list_of_entries:
         key = entry.split(":", 1)
         if key[0] == 'Filename':
@@ -81,6 +82,8 @@ def packages_to_json(link, packages):
             descriptions.append(key[1])
         elif key[0] == 'Author':
             authors.append(key[1])
+        elif key[0] == 'cydia':
+            paid.append(key[1])
     package_json = []
     count = 0
     for i in range(len(package_ids)):
@@ -89,13 +92,18 @@ def packages_to_json(link, packages):
             name = names[i][1:]
             author = authors[i][1:]
             version = versions[i][1:]
+            if paid[i] != None:
+                paidpkg = True
+            else:
+                paidpkg = False
             description = descriptions[i][1:]
             package_json.append([{
                     'name': name,
                     'author': author,
                     'download_link': link + '/' + filename,
                     'version': version,
-                    'description': description
+                    'description': description,
+                    'paid': paidpkg
                 }])
             count += 1
         except:
@@ -117,6 +125,20 @@ def generate_template(list_of):
             <p class="card-text">{package_description}</p>
         </div>
       </div>"""
+    template_paid = """\
+      <div class="card" style="margin: 5px;">
+        <div class="card-body">
+            <span style="float:right">
+              <a class="btn btn-primary btn-round" alt="Download" title="Download" href="{download_link}" disabled>PAID</a>
+              <a class="btn btn-primary btn-round" title="Share" disabled><i class="fa fa-share-alt" style="color:white;"></i></a>
+            </span>
+            <h4 class="card-title">{package_title}</h4>
+            <h6 class="card-subtitle mb-2">{package_author}</h6>
+            <h6 class="card-subtitle mb-3 text-muted">{package_version}</h6>
+            <hr>
+            <p class="card-text">{package_description}</p>
+        </div>
+      </div>"""
     entry = ""
     for i in range(len(list_of)):
         package_title = list_of[i][0]['name']
@@ -124,7 +146,11 @@ def generate_template(list_of):
         package_version = list_of[i][0]['version']
         package_description = list_of[i][0]['description']
         download_link = list_of[i][0]['download_link']
-        entry += template.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
+        paid = list_of[i][0]['paid']
+        if paid == True:
+            entry += template_paid.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
+        else:
+            entry += template.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
     return entry
         
         

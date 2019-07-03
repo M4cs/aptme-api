@@ -20,6 +20,10 @@ def index():
         'status': 200
     })
 
+@app.route('/mobile')
+def index():
+    return redirect('https://proud-river-839e.maxb.workers.dev', 200)
+
 @app.route('/')
 def root():
     entry = RootRender.generateLeaderboard()

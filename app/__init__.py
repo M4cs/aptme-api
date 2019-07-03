@@ -126,7 +126,7 @@ def reimage():
 
 @app.errorhandler(500)
 def fivehundo(self):
-    return render_template('error.html')
+    return render_template('maintain.html')
 
 from app.resources.search import Search
 from app.resources.download import Download

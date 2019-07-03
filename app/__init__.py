@@ -21,7 +21,7 @@ def index():
     })
 
 @app.route('/mobile')
-def index():
+def mobile():
     return redirect('https://proud-river-839e.maxb.workers.dev', 302)
 
 @app.route('/')

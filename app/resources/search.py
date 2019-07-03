@@ -17,6 +17,7 @@ class Search(Resource):
         query = data['search']
         link = query.replace('https://', '').replace('http://', '')
         if search.check_cache(link) == True:
+            print('Serving Cached!')
             template = search.grab_cache(link)
             return make_response(render_template('package.html', template=template))
         if query == "https://repo.hackyouriphone.org":

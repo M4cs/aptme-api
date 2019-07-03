@@ -7,6 +7,7 @@ import json
 def search_parser():
     parser = reqparse.RequestParser()
     parser.add_argument('search', type=str, required=True)
+    parser.add_argument('force_cache', type=bool)
     return parser
 
 
@@ -18,8 +19,9 @@ class Search(Resource):
         link = query.replace('https://', '').replace('http://', '')
         if search.check_cache(link) == True:
             print('Serving Cached!')
-            template = search.grab_cache(link)
-            return make_response(render_template('package.html', template=template))
+            if data['force_cache'] != True:
+                template = search.grab_cache(link)
+                return make_response(render_template('package.html', template=template))
         if query == "https://repo.hackyouriphone.org":
             print(request.remote_addr)
             return 500

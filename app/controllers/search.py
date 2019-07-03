@@ -66,20 +66,22 @@ def packages_to_json(link, packages):
     package_json = []
     count = 0
     for i in range(len(package_ids)):
-        filename = filenames[i][1:] or 'Unknown'
-        name = names[i][1:] or 'Unknown'
-        author = authors[i][1:] or 'Unknown'
-        print(authors)
-        version = versions[i][1:] or 'Unknown'
-        description = descriptions[i][1:] or 'Unknown'
-        package_json.append([{
-                'name': name,
-                'author': author,
-                'download_link': link + '/' + filename,
-                'version': version,
-                'description': description
-            }])
-        count += 1
+        try:
+            filename = filenames[i][1:]
+            name = names[i][1:]
+            author = authors[i][1:]
+            version = versions[i][1:]
+            description = descriptions[i][1:]
+            package_json.append([{
+                    'name': name,
+                    'author': author,
+                    'download_link': link + '/' + filename,
+                    'version': version,
+                    'description': description
+                }])
+            count += 1
+        except:
+            pass
     return package_json
 
 def generate_template(list_of):

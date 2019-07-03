@@ -52,7 +52,6 @@ def get_packages(link):
 
 def packages_to_json(link, packages):
     list_of_entries = packages.decode('utf-8').splitlines()
-    print(list_of_entries)
     package_json = {}
     package_ids = []
     filenames = []
@@ -103,7 +102,9 @@ def packages_to_json(link, packages):
                 }])
             count += 1
         except:
+            print('FAILED')
             pass
+    print(package_json)
     return package_json
 
 def generate_template(list_of):

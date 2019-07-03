@@ -56,6 +56,7 @@ def get_packages(link):
 def packages_to_json(link, packages):
     if packages == None:
         return None
+    print(packages)
     list_of_entries = packages.decode('utf-8').splitlines()
     package_json = {}
     package_ids = []

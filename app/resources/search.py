@@ -15,6 +15,10 @@ class Search(Resource):
         parser = search_parser()
         data = parser.parse_args()
         query = data['search']
+        if search.check_cache(query) == True:
+            list_of = search.grab_cache(query)
+            template = search.generate_template(list_of)
+            return make_response(render_template('package.html', template=template))
         if query == "https://repo.hackyouriphone.org":
             print(request.remote_addr)
             return 500
@@ -51,5 +55,6 @@ class Search(Resource):
         search.search_json(query)
         packages = search.get_packages(query)
         list_of = search.packages_to_json(query, packages)
+        search.cache_packages(query, list_of)
         template = search.generate_template(list_of)
         return make_response(render_template('package.html', template=template))

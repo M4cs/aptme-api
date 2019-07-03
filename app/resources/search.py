@@ -20,10 +20,12 @@ class Search(Resource):
         if query == "":
             return make_response(render_template('error.html'))
         if search.check_cache(link) == True:
-            print('Serving Cached!')
-            if data['force_cache'] == 'on':
+            if data['force_cache'] != 'on':
+                print('Serving Cached!')
                 template = search.grab_cache(link)
                 return make_response(render_template('package.html', template=template))
+            else:
+                pass
         if query == "https://repo.hackyouriphone.org":
             print(request.remote_addr)
             return 500

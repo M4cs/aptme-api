@@ -147,6 +147,7 @@ def generate_template(list_of):
         package_description = list_of[i][0]['description']
         download_link = list_of[i][0]['download_link']
         paid = list_of[i][0]['paid']
+        print(list_of)
         if paid == True:
             entry += template_paid.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
         else:

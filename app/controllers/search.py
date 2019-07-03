@@ -14,15 +14,15 @@ def search_json(link):
         json_file.close()
         
 def cache_packages(link, template):
-    with open('app/db/{}.html'.format(link), 'w') as html:
+    with open('app/db/{}.html'.format(link.replace('/', '-')), 'w') as html:
         html.write(template)
     return True
 
 def check_cache(link):
-    return os.path.exists('app/db/{}.html'.format(link))
+    return os.path.exists('app/db/{}.html'.format(link.replace('/', '-')))
 
 def grab_cache(link):
-    with open('app/db/{}.html'.format(link), 'r') as html:
+    with open('app/db/{}.html'.format(link.replace('/', '-')), 'r') as html:
         template = html.read()
     return str(template)
 

@@ -69,6 +69,7 @@ def packages_to_json(link, packages):
         filename = filenames[i][1:] or 'Unknown'
         name = names[i][1:] or 'Unknown'
         author = authors[i][1:] or 'Unknown'
+        print(authors)
         version = versions[i][1:] or 'Unknown'
         description = descriptions[i][1:] or 'Unknown'
         package_json.append([{

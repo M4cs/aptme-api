@@ -22,8 +22,7 @@ class Search(Resource):
             return make_response(render_template('error.html'))
         if search.check_cache(link) == True:
             if data['force_cache'] != 'on':
-                if app.testing == True:
-                    print('Serving Cached Package Index for URL:', link)
+                print('Serving Cached Package Index for URL:', link)
                 template = search.grab_cache(link)
                 return make_response(render_template('package.html', template=template))
             else:

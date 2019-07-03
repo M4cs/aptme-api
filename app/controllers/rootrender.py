@@ -22,4 +22,5 @@ class RootRender:
                                     if "https://cool" != k:
                                         entry += template.format(count=count, link=k, link2=k.replace('https://', '').replace('http://', ''), vc=v)
                                         count += 1
+            json_file.close()
         return entry

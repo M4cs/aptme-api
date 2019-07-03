@@ -7,6 +7,8 @@ from app.controllers.rootrender import RootRender
 app = Flask(__name__)
 api = Api(app)
 
+app.jinja_env.cache = {}
+
 limiter = Limiter(
     app,
     key_func=get_remote_address,

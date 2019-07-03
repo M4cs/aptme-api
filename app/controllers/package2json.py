@@ -18,12 +18,15 @@ def get_packages(link):
     try:
         packages = res.get(bzlink, headers=headers).content
         packages_dec = bz2.decompress(packages)
+        res.close()
         return packages_dec
     except:
         try:
             packages = res.get(ptlink, headers=headers).content
+            res.close()
             return packages
         except:
+            res.close()
             return None
 
 def packages_to_json(link, packages):
@@ -78,7 +81,7 @@ def packages_to_json(link, packages):
             description = descriptions[i][1:]
             maintainer = maintainers[i][1:]
             depiction = depictions[i][1:]
-            package_json.append([{
+            package_json.append({
                     'name': name,
                     'author': author,
                     'download_link': link + '/' + filename,
@@ -86,7 +89,7 @@ def packages_to_json(link, packages):
                     'description': description,
                     'maintainer': maintainer,
                     'depiction': depiction,
-                }])
+                })
             count += 1
         return package_json
     except:

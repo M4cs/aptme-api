@@ -16,6 +16,7 @@ def search_json(link):
 def cache_packages(link, template):
     with open('app/db/{}.html'.format(link), 'w') as html:
         html.write(template)
+    return True
 
 def check_cache(link):
     return os.path.exists('app/db/{}.html'.format(link))

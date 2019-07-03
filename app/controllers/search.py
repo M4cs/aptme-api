@@ -13,25 +13,17 @@ def search_json(link):
         json.dump(data, json_file, indent=4)
         json_file.close()
         
-def cache_packages(link, packages_json):
-    with open('app/db/{}.json'.format(link), 'w') as json_file:
-        data = {}
-        data[link] = packages_json
-        json_file.seek(0)
-        json_file.truncate()
-        json.dump(data, json_file, indent=4)
-        json_file.close()
-    return True
+def cache_packages(link, template):
+    with open('app/db/{}.html'.format(link), 'w') as html:
+        html.write(template)
 
 def check_cache(link):
-    return os.path.exists('app/db/{}.json'.format(link))
+    return os.path.exists('app/db/{}.html'.format(link))
 
 def grab_cache(link):
-    with open('app/db/{}.json'.format(link), 'r+') as json_file:
-        data = json.load(json_file)
-        package_json = data[link]
-        json_file.close()
-    return package_json
+    with open('app/db/{}.html'.format(link), 'r') as html:
+        template = html.read()
+    return str(template)
 
 def get_packages(link):
     res = requests.session()

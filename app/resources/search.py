@@ -17,8 +17,7 @@ class Search(Resource):
         query = data['search']
         link = query.replace('https://', '').replace('http://', '')
         if search.check_cache(link) == True:
-            list_of = search.grab_cache(link)
-            template = search.generate_template(list_of)
+            template = search.grab_cache(link)
             return make_response(render_template('package.html', template=template))
         if query == "https://repo.hackyouriphone.org":
             print(request.remote_addr)
@@ -56,6 +55,6 @@ class Search(Resource):
         search.search_json(query)
         packages = search.get_packages(query)
         list_of = search.packages_to_json(query, packages)
-        search.cache_packages(link, list_of)
         template = search.generate_template(list_of)
+        search.cache_packages(link, template)
         return make_response(render_template('package.html', template=template))

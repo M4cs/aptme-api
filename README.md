@@ -2,6 +2,8 @@
 
 This repository is the public source code of https://aptme.io
 
+**Public API Documentation:** https://github.com/M4cs/aptme-api/wiki/API-Documentation
+
 # Running The Dev Sever
 
 ```

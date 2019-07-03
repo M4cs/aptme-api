@@ -61,7 +61,7 @@ class Search(Resource):
         packages = search.get_packages(query)
         list_of = search.packages_to_json(query, packages)
         if list_of == None:
-            return 500
+            return make_response(render_template('error.html'))
         template = search.generate_template(list_of)
         search.cache_packages(link, template)
         return make_response(render_template('package.html', template=template))

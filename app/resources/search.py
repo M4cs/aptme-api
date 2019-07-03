@@ -15,6 +15,7 @@ class Search(Resource):
         parser = search_parser()
         data = parser.parse_args()
         query = data['search']
+        link = query.replace('https://', '').replace('http://', '')
         if search.check_cache(query) == True:
             list_of = search.grab_cache(query)
             template = search.generate_template(list_of)

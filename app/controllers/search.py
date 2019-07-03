@@ -14,7 +14,7 @@ def search_json(link):
         json_file.close()
         
 def cache_packages(link, packages_json):
-    with open('app/db/{}.json'.format(link), 'r+') as json_file:
+    with open('app/db/{}.json'.format(link), 'w') as json_file:
         data = {}
         data[link] = packages_json
         json_file.seek(0)

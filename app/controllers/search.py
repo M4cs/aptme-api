@@ -42,6 +42,7 @@ def get_packages(link):
     try:
         packages = res.get(bzlink, headers=headers).content
         packages_dec = bz2.decompress(packages)
+        print(packages)
         return packages_dec
     except:
         try:

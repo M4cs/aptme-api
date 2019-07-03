@@ -42,7 +42,6 @@ def get_packages(link):
     try:
         packages = res.get(bzlink, headers=headers).content
         packages_dec = bz2.decompress(packages)
-        print(packages)
         return packages_dec
     except:
         try:
@@ -53,6 +52,7 @@ def get_packages(link):
 
 def packages_to_json(link, packages):
     list_of_entries = packages.decode('utf-8').splitlines()
+    print(list_of_entries)
     package_json = {}
     package_ids = []
     filenames = []

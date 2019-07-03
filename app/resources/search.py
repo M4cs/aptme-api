@@ -52,5 +52,6 @@ class Search(Resource):
             list_of = search.packages_to_json(query, packages)
             template = search.generate_template(list_of)
             return make_response(render_template('package.html', template=template))
-        except:
+        except Exception as e:
+            print(e)
             return make_response(render_template('error.html'))

@@ -75,11 +75,14 @@ def packages_to_json(link, packages):
         package_json = []
         count = 0
         for i in range(len(package_ids)):
-            if filenames is not None:
+            if len(filenames) >= 1:
                 filename = filenames[i][1:]
             else:
                 filename = ""
-            name = names[i][1:]
+            if len(names) >= 1:
+                name = names[i][1:]
+            else:
+                name = ""
             author = authors[i][1:]
             version = versions[i][1:]
             description = descriptions[i][1:]

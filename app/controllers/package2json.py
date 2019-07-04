@@ -1,5 +1,6 @@
 import json, requests, lzma, gzip, bz2
 import time
+import traceback
 from flask import make_response, render_template
 
 def get_packages(link):
@@ -92,5 +93,5 @@ def packages_to_json(link, packages):
                 })
             count += 1
         return package_json
-    except:
-        return make_response(render_template('error.html'))
+    except Exception as e:
+        traceback.print_tb(e.__traceback__)

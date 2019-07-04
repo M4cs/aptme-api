@@ -59,6 +59,8 @@ def packages_to_json(link, packages):
     authors = []
     versions = []
     descriptions = []
+    dependencies = []
+    conflicts = []
     icons = []
     for entry in list_of_entries:
         key = entry.split(":", 1)
@@ -76,6 +78,10 @@ def packages_to_json(link, packages):
             descriptions.append(key[1])
         elif key[0] == 'Author':
             authors.append(key[1])
+        elif key[0] == 'Dependencies':
+            dependencies.append(key[1])
+        elif key[0] == 'Conflicts':
+            conflicts.append(key[1])
     package_json = []
     count = 0
     for i in range(len(package_ids)):
@@ -100,12 +106,22 @@ def packages_to_json(link, packages):
                 description = descriptions[i][1:]
             except:
                 description = 'No Description'
+            try:
+                conflict = conflicts[i][1:]
+            except:
+                conflict = 'No Conflicts'
+            try:
+                dependency = dependencies[i][1:]
+            except:
+                dependency = 'No Dependenies'
             package_json.append([{
                     'name': name,
                     'author': author,
                     'download_link': link + '/' + filename,
                     'version': version,
-                    'description': description
+                    'description': description,
+                    'conflicts': conflict,
+                    'dependencies': dependency
                 }])
             count += 1
         except:
@@ -127,6 +143,9 @@ def generate_template(list_of):
             <h6 class="card-subtitle mb-3 text-muted">{package_version}</h6>
             <hr>
             <p class="card-text">{package_description}</p>
+            <hr>
+            <p class="card-subtitle mb-3">Dependencies: {deps}</p>
+            <p class="card-subtitle mb-3">Conflicts: {conflicts}</p>
         </div>
       </div>"""
     entry = ""
@@ -136,7 +155,9 @@ def generate_template(list_of):
         package_version = list_of[i][0]['version']
         package_description = list_of[i][0]['description']
         download_link = list_of[i][0]['download_link']
-        entry += template.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link)
+        deps = list_of[i][0]['dependencies']
+        conflicts = list_of[i][0]['conflicts']
+        entry += template.format(package_author=package_author, package_description=package_description, package_title=package_title, package_version=package_version, download_link=download_link, deps=deps, conflicts=conflicts)
     return entry
         
         

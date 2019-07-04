@@ -47,10 +47,6 @@ class Search(Resource):
             return {
                 'message': 'Fuck off kid'
             }, 403
-        if "nepeta" in query:
-            return {
-                'message': 'Nep has been blacklisted. Blame Castyte for abusing it'
-            }, 403
         if "javascript" in query:
             return {
                 'message': 'No XSS'

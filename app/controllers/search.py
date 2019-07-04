@@ -80,11 +80,26 @@ def packages_to_json(link, packages):
     count = 0
     for i in range(len(package_ids)):
         try:
-            filename = filenames[i][1:]
-            name = names[i][1:]
-            author = authors[i][1:]
-            version = versions[i][1:]
-            description = descriptions[i][1:]
+            try:
+                filename = filenames[i][1:]
+            except:
+                filename = ''
+            try:
+                name = names[i][1:]
+            except:
+                name = package_ids[i]
+            try:
+                author = authors[i][1:]
+            except:
+                author = 'Unknown'
+            try:
+                version = versions[i][1:]
+            except:
+                version = 'Unknown'
+            try:
+                description = descriptions[i][1:]
+            except:
+                description = 'No Description'
             package_json.append([{
                     'name': name,
                     'author': author,

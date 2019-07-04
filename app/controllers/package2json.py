@@ -75,20 +75,27 @@ def packages_to_json(link, packages):
         package_json = []
         count = 0
         print(package_ids)
-        print(names)
         for i in range(len(package_ids)):
-            if len(filenames) >= 1:
+            try:
                 filename = filenames[i][1:]
-            else:
+            except:
                 filename = ""
-            if len(names) >= 1:
+            try:
                 name = names[i][1:]
-            else:
+            except:
                 name = ""
-            author = authors[i][1:]
-            version = versions[i][1:]
-            description = descriptions[i][1:]
-            maintainer = maintainers[i][1:]
+            try:
+                author = authors[i][1:]
+            try:
+                version = versions[i][1:]
+            except:
+                version = ''
+            try:
+                description = descriptions[i][1:]
+            except:
+                description = ''
+            try:
+                maintainer = maintainers[i][1:]
             if len(depictions) >= 1:
                 depiction = depictions[i][1:]
             else:

@@ -86,6 +86,8 @@ def packages_to_json(link, packages):
                 name = ""
             try:
                 author = authors[i][1:]
+            except:
+                author = ''
             try:
                 version = versions[i][1:]
             except:

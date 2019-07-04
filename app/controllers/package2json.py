@@ -74,6 +74,7 @@ def packages_to_json(link, packages):
                 conflicts.append(key[1])
         package_json = []
         count = 0
+        print(package_ids)
         for i in range(len(package_ids)):
             if len(filenames) >= 1:
                 filename = filenames[i][1:]

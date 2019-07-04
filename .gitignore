@@ -8,3 +8,4 @@ aptme-api.ini
 .vscode
 **/*.DS_Store
 app/db/link_count.json
+app/db/aptme.io-api-repos?search=apt.thebigboss.org-repofiles-cydia.html

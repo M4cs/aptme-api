@@ -96,9 +96,11 @@ def packages_to_json(link, packages):
                 description = ''
             try:
                 maintainer = maintainers[i][1:]
-            if len(depictions) >= 1:
+            except:
+                maintainer = ''
+            try:
                 depiction = depictions[i][1:]
-            else:
+            except:
                 depiction = ""
             package_json.append({
                     'name': name,

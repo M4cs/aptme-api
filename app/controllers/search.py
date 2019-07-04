@@ -78,7 +78,7 @@ def packages_to_json(link, packages):
             descriptions.append(key[1])
         elif key[0] == 'Author':
             authors.append(key[1])
-        elif key[0] == 'Dependencies':
+        elif key[0] == 'Depends':
             dependencies.append(key[1])
         elif key[0] == 'Conflicts':
             conflicts.append(key[1])

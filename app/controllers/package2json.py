@@ -44,7 +44,7 @@ def packages_to_json(link, packages):
         depictions = []
         sileodepictions = []
         maintainers = []
-        depends = []
+        dependencies = []
         conflicts = []
         for entry in list_of_entries:
             key = entry.split(":", 1)
@@ -69,7 +69,7 @@ def packages_to_json(link, packages):
             elif key[0] == 'Author':
                 authors.append(key[1])
             elif key[0] == 'Depends':
-                depends.append(key[1])
+                dependencies.append(key[1])
             elif key[0] == 'Conflicts':
                 conflicts.append(key[1])
         package_json = []
@@ -104,6 +104,14 @@ def packages_to_json(link, packages):
                 depiction = depictions[i][1:]
             except:
                 depiction = ""
+            try:
+                conflict = conflicts[i][1:]
+            except:
+                conflict = 'No Conflicts'
+            try:
+                dependency = dependencies[i][1:]
+            except:
+                dependency = 'No Dependenies'
             package_json.append({
                     'name': name,
                     'author': author,
@@ -112,6 +120,8 @@ def packages_to_json(link, packages):
                     'description': description,
                     'maintainer': maintainer,
                     'depiction': depiction,
+                    'dependencies': dependency,
+                    'conflicts': conflict
                 })
             count += 1
         return package_json

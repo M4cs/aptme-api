@@ -136,7 +136,6 @@ def generate_template(list_of):
         <div class="card-body">
             <span style="float:right">
               <a class="btn btn-primary btn-round" alt="Download" title="Download" href="{download_link}"><i class="fa fa-download" style="color:white;"></i></a>
-              <a class="btn btn-primary btn-round" title="Share" disabled><i class="fa fa-share-alt" style="color:white;"></i></a>
             </span>
             <h4 class="card-title">{package_title}</h4>
             <h6 class="card-subtitle mb-2">{package_author}</h6>

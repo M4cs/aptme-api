@@ -125,5 +125,5 @@ def packages_to_json(link, packages):
                 })
             count += 1
         return package_json
-    except Exception as e:
+    except:
         print(traceback.format_exc())

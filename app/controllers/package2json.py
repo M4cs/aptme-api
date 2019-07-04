@@ -84,7 +84,7 @@ def packages_to_json(link, packages):
             version = versions[i][1:]
             description = descriptions[i][1:]
             maintainer = maintainers[i][1:]
-            if depictions is not None:
+            if len(depictions) >= 1:
                 depiction = depictions[i][1:]
             else:
                 depiction = ""

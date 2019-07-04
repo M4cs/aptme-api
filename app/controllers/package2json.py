@@ -97,4 +97,4 @@ def packages_to_json(link, packages):
             count += 1
         return package_json
     except Exception as e:
-        traceback.format_exc()
+        print(traceback.format_exc())

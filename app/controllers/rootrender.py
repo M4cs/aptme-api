@@ -20,7 +20,8 @@ class RootRender:
                             if "xarold" not in k:
                                 if "pulandres" not in k:
                                     if "https://cool" != k:
-                                        entry += template.format(count=count, link=k, link2=k.replace('https://', '').replace('http://', ''), vc=v)
-                                        count += 1
+                                        if count <= 10:
+                                            entry += template.format(count=count, link=k, link2=k.replace('https://', '').replace('http://', ''), vc=v)
+                                            count += 1
             json_file.close()
         return entry

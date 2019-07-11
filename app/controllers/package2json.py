@@ -1,5 +1,6 @@
 import json, requests, lzma, gzip, bz2
 import time
+import traceback
 from flask import make_response, render_template
 
 def get_packages(link):
@@ -43,7 +44,7 @@ def packages_to_json(link, packages):
         depictions = []
         sileodepictions = []
         maintainers = []
-        depends = []
+        dependencies = []
         conflicts = []
         for entry in list_of_entries:
             key = entry.split(":", 1)
@@ -68,19 +69,49 @@ def packages_to_json(link, packages):
             elif key[0] == 'Author':
                 authors.append(key[1])
             elif key[0] == 'Depends':
-                depends.append(key[1])
+                dependencies.append(key[1])
             elif key[0] == 'Conflicts':
                 conflicts.append(key[1])
         package_json = []
         count = 0
+        print(package_ids)
         for i in range(len(package_ids)):
-            filename = filenames[i][1:]
-            name = names[i][1:]
-            author = authors[i][1:]
-            version = versions[i][1:]
-            description = descriptions[i][1:]
-            maintainer = maintainers[i][1:]
-            depiction = depictions[i][1:]
+            try:
+                filename = filenames[i][1:]
+            except:
+                filename = ""
+            try:
+                name = names[i][1:]
+            except:
+                name = ""
+            try:
+                author = authors[i][1:]
+            except:
+                author = ''
+            try:
+                version = versions[i][1:]
+            except:
+                version = ''
+            try:
+                description = descriptions[i][1:]
+            except:
+                description = ''
+            try:
+                maintainer = maintainers[i][1:]
+            except:
+                maintainer = ''
+            try:
+                depiction = depictions[i][1:]
+            except:
+                depiction = ""
+            try:
+                conflict = conflicts[i][1:]
+            except:
+                conflict = 'No Conflicts'
+            try:
+                dependency = dependencies[i][1:]
+            except:
+                dependency = 'No Dependenies'
             package_json.append({
                     'name': name,
                     'author': author,
@@ -89,8 +120,10 @@ def packages_to_json(link, packages):
                     'description': description,
                     'maintainer': maintainer,
                     'depiction': depiction,
+                    'dependencies': dependency,
+                    'conflicts': conflict
                 })
             count += 1
         return package_json
     except:
-        return make_response(render_template('error.html'))
+        print(traceback.format_exc())

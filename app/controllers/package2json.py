@@ -116,7 +116,7 @@ def packages_to_json(link, packages):
             try:
                 package = package_ids[i][1:]
             except:
-                dependency = 'Unknown Package ID'
+                package = 'Unknown Package ID'
             package_json.append({
                     'name': name,
                     'author': author,

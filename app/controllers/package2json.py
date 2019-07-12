@@ -127,7 +127,7 @@ def packages_to_json(link, packages):
                     'depiction': depiction,
                     'dependencies': dependency,
                     'conflicts': conflict,
-                    'package': package
+                    'package_id': package
                 })
             count += 1
         return package_json

@@ -46,6 +46,7 @@ def packages_to_json(link, packages):
         maintainers = []
         dependencies = []
         conflicts = []
+        packages = []
         for entry in list_of_entries:
             key = entry.split(":", 1)
             if key[0] == 'Filename':
@@ -112,6 +113,10 @@ def packages_to_json(link, packages):
                 dependency = dependencies[i][1:]
             except:
                 dependency = 'No Dependenies'
+            try:
+                package = package_ids[i][1:]
+            except:
+                dependency = 'Unknown Package ID'
             package_json.append({
                     'name': name,
                     'author': author,
@@ -121,7 +126,8 @@ def packages_to_json(link, packages):
                     'maintainer': maintainer,
                     'depiction': depiction,
                     'dependencies': dependency,
-                    'conflicts': conflict
+                    'conflicts': conflict,
+                    'package_id': package
                 })
             count += 1
         return package_json

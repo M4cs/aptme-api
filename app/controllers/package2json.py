@@ -117,6 +117,10 @@ def packages_to_json(link, packages):
                 package = package_ids[i][1:]
             except:
                 package = 'Unknown Package ID'
+            try:
+                icon = icons[i][1:]
+            except:
+                icon = 'No Icon URL'
             package_json.append({
                     'name': name,
                     'author': author,
@@ -127,7 +131,8 @@ def packages_to_json(link, packages):
                     'depiction': depiction,
                     'dependencies': dependency,
                     'conflicts': conflict,
-                    'package_id': package
+                    'package_id': package,
+                    'icon': icon
                 })
             count += 1
         return package_json

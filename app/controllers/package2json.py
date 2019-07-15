@@ -50,9 +50,9 @@ def packages_to_json(link, packages):
         archs = []
         comps = []
         dists = []
-        print(list_of_entries)
         for entry in list_of_entries:
             key = entry.split(":", 1)
+            print(key)
             if key[0] == 'Filename':
                 filenames.append(key[1])
             elif key[0] == 'Depiction':
@@ -81,7 +81,6 @@ def packages_to_json(link, packages):
                 dists.append(key[1])
         package_json = []
         count = 0
-        print(package_ids)
         for i in range(len(package_ids)):
             try:
                 filename = filenames[i][1:]

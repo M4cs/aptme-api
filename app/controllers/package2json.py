@@ -79,6 +79,7 @@ def packages_to_json(link, packages):
                 conflicts.append(key[1])
             elif key[0] == 'Distribution':
                 dists.append(key[1])
+        print(icons)
         package_json = []
         count = 0
         for i in range(len(package_ids)):

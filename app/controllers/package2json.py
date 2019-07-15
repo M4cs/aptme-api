@@ -52,6 +52,7 @@ def packages_to_json(link, packages):
         dists = []
         for entry in list_of_entries:
             key = entry.split(":", 1)
+            print(key)
             if key[0] == 'Filename':
                 filenames.append(key[1])
             if key[0] == 'Depiction':

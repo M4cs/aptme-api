@@ -50,6 +50,7 @@ def packages_to_json(link, packages):
         archs = []
         comps = []
         dists = []
+        print(entry)
         for entry in list_of_entries:
             key = entry.split(":", 1)
             if key[0] == 'Filename':

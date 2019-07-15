@@ -47,32 +47,69 @@ def packages_to_json(link, packages):
         dependencies = []
         conflicts = []
         packages = []
+        archs = []
+        comps = []
+        dists = []
         for entry in list_of_entries:
             key = entry.split(":", 1)
             if key[0] == 'Filename':
                 filenames.append(key[1])
-            elif key[0] == 'Depiction':
+            if key[0] == 'Depiction':
                 depictions.append(key[1])
-            elif key[0].lower() == 'sileodepiction':
+            else:
+                depictions.append('None')
+            if key[0].lower() == 'sileodepiction':
                 sileodepictions.append(key[1])
-            elif key[0] == 'Maintainer':
+            else:
+                sileodepictions.append('None')
+            if key[0] == 'Maintainer':
                 maintainers.append(key[1])
-            elif key[0] == 'Name':
+            else:
+                maintainers.append('None')
+            if key[0] == 'Name':
                 names.append(key[1])
-            elif key[0] == 'Package':
+            else:
+                names.append('None')
+            if key[0] == 'Package':
                 package_ids.append(key[1])
-            elif key[0] == 'Icon':
+            else:
+                package_ids.append('None')
+            if key[0] == 'Icon':
                 icons.append(key[1])
-            elif key[0] == 'Version':
+            else:
+                icons.append('None')
+            if key[0] == 'Version':
                 versions.append(key[1])
-            elif key[0] == 'Description':
+            else:
+                versions.append('None')
+            if key[0] == 'Description':
                 descriptions.append(key[1])
-            elif key[0] == 'Author':
+            else:
+                descriptions.append('None')
+            if key[0] == 'Author':
                 authors.append(key[1])
-            elif key[0] == 'Depends':
+            else:
+                authors.append('None')
+            if key[0] == 'Depends':
                 dependencies.append(key[1])
-            elif key[0] == 'Conflicts':
+            else:
+                dependencies.append('None')
+            if key[0] == 'Conflicts':
                 conflicts.append(key[1])
+            else:
+                conflicts.append('None')
+            if key[0] == 'Distribution':
+                dists.append(key[1])
+            else:
+                dists.append('None')
+            if key[0] == 'Components':
+                comps.append(key[1])
+            else:
+                comps.append('None')
+            if key[0] == 'Architecture':
+                archs.append(key[1])
+            else:
+                archs.append('None')
         package_json = []
         count = 0
         print(package_ids)
@@ -121,6 +158,9 @@ def packages_to_json(link, packages):
                 icon = icons[i][1:]
             except:
                 icon = 'No Icon URL'
+            arch = archs[i][1:]
+            dist = dists[i][1:]
+            comp = comps[i][1:]
             package_json.append({
                     'name': name,
                     'author': author,
@@ -132,7 +172,10 @@ def packages_to_json(link, packages):
                     'dependencies': dependency,
                     'conflicts': conflict,
                     'package_id': package,
-                    'icon': icon
+                    'icon': icon,
+                    'architecture': arch,
+                    'distribution': dist,
+                    'components': comp
                 })
             count += 1
         return package_json
